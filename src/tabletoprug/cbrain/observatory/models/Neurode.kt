@@ -11,7 +11,7 @@ import kotlin.math.tanh
 import kotlin.time.Duration.Companion.milliseconds
 
 
-class Neuron(
+class Neurode(
     val id: String,
     var bias: Double = 0.0,
     var activation: ActivationType = ActivationType.RELU,
@@ -27,7 +27,7 @@ class Neuron(
     private val scope: CoroutineScope = CoroutineScope(Dispatchers.Default)
 ) {
     val incoming = mutableMapOf<String, Double>()
-    val outgoing = mutableListOf<Neuron>()
+    val outgoing = mutableListOf<Neurode>()
 
     private val sourceFireCounts = mutableMapOf<String, Int>()
     private val sourceDecayFactor = mutableMapOf<String, Double>()
@@ -41,7 +41,7 @@ class Neuron(
         get() = baseThreshold * impact + bias
 
 
-    fun connectFrom(source: Neuron, weight: Double) {
+    fun connectFrom(source: Neurode, weight: Double) {
         incoming[source.id] = weight
         source.outgoing.add(this)
     }

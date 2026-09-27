@@ -1,24 +1,24 @@
  package tabletoprug.cbrain.models
 
- import tabletoprug.cbrain.observatory.models.Neuron
+ import tabletoprug.cbrain.observatory.models.Neurode
 
 
  class FiringSquad {
-     private val _neurons = mutableListOf<Neuron>()
+     private val _neurodes = mutableListOf<Neurode>()
 
-     val neurons: List<Neuron>
-         get() = _neurons                  // live view (recommended)
+     val neurodes: List<Neurode>
+         get() = _neurodes                  // live view (recommended)
 
      // or if you prefer a copy each time:
      // get() = _neurons.toList()
 
-     fun addToSquad(n: Neuron) {
-         if (n !in _neurons) {
-             _neurons.add(n)
+     fun addToSquad(n: Neurode) {
+         if (n !in _neurodes) {
+             _neurodes.add(n)
          }
      }
 
-     fun removeFromSquad(n: Neuron) {
-         _neurons.remove(n)
+     fun removeFromSquad(n: Neurode) {
+         _neurodes.remove(n)
      }
  }
